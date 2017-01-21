@@ -67,8 +67,8 @@ export default class VideoComponent extends React.Component {
     return (
       <div className='demo-frame'>
         <div className='position-div'>
-          <video id='video' style={{height: '300px'}} autoPlay />
-          <canvas id='canvas' style={{height: '300px'}} />
+          <video id='video' style={{height: '325px'}} autoPlay />
+          <canvas id='canvas' style={{height: '325px'}} />
         </div>
       </div>
     )

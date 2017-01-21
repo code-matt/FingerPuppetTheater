@@ -1,12 +1,24 @@
 .box1{
-    background-color: rgb(78.9%, 98.7%, 63.6%)
+    background-color: transparent
 }
 
 .box2{
-    background-color: rgb(63.6%, 98.7%, 98.5%)
+    background-color: transparent
 }
 
 .box3{
-    background-color: #16d0c6
+    background-color: transparent
+}
+
+h3{
+    font-family: 'Parisienne', cursive;
+    color: #5434ba;
+    margin-top: 10px
+}
+
+body{
+    background-image: url("https://i1.creativecow.net/u/12414/spotlightsmall.jpg");
+    background-size: 100%;
+    overflow: hidden
 }
 
