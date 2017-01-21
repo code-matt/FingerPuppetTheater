@@ -1,0 +1,11 @@
+video, canvas{
+    position: absolute;
+    width: 100%;
+    transform: translateX(-15px)
+
+}
+
+.position-div{
+    height: 300px;
+    margin-bottom: 15px;
+}
