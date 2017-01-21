@@ -1,6 +1,7 @@
 import React from 'react'
 import "./dashboard.css"
 import VideoComponent from "./video/video"
+import SettingsComponent from "./settings/settings"
 
 export default class DashboardComponent extends React.Component {
   render () {
@@ -11,7 +12,7 @@ export default class DashboardComponent extends React.Component {
           <VideoComponent/>
           </div>
           <div className="col-md-8 offset-md-2 box3">
-          ima dashboard
+          <SettingsComponent/>
           </div>
         </div>
       </div>
