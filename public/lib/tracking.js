@@ -2245,9 +2245,9 @@
 
   tracking.ColorTracker.registerColor('magenta', function(r, g, b) {
     var threshold = 50,
-      dx = r - 255,
-      dy = g - 0,
-      dz = b - 255;
+      dx = r - 44,
+      dy = g - 188,
+      dz = b - 250;44,188,250
 
     if ((r - g) >= threshold && (b - g) >= threshold) {
       return true;
