@@ -15,7 +15,6 @@ export default class VideoComponent extends React.Component {
     var tracker = new window.tracking.ColorTracker(['cyan'])
     window.tracking.track(video, tracker, { camera: true })
     tracker.on('track', function (event) {
-      console.log(event)
       context.clearRect(0, 0, canvas.width, canvas.height)
       event.data.forEach(function (rect) {
         if (rect.color === 'custom') {
@@ -66,9 +65,9 @@ export default class VideoComponent extends React.Component {
   render () {
     return (
       <div className='demo-frame'>
-        <div className='demo-container'>
-          <video id='video' width='600' height='450' autoPlay />
-          <canvas id='canvas' width='600' height='450' />
+        <div className='position-div'>
+          <video id='video' style={{height: '300px'}} autoPlay />
+          <canvas id='canvas' style={{height: '300px'}} />
         </div>
       </div>
     )
