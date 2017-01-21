@@ -12,7 +12,7 @@ export default class DashboardComponent extends React.Component {
              Finger Puppet Theatre
           </h3>
         </div>
-        <div className='container'>
+        <div className='container-fluid'>
           <div className='row box1'>
 
             <div className='col-md-8 offset-md-2 box2'>

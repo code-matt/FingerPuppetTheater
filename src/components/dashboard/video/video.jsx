@@ -10,6 +10,7 @@ export default class VideoComponent extends React.Component {
     this.componentDidMount = this.componentDidMount.bind(this)
     this.registerColor = this.registerColor.bind(this)
   }
+
   componentDidMount () {
     var video = document.getElementById('video')
     var canvas = document.getElementById('canvas')
@@ -37,8 +38,9 @@ export default class VideoComponent extends React.Component {
         context.fillText('y: ' + rect.y + 'px', rect.x + rect.width + 5, rect.y + 22)
       })
     })
-    // initGUIControllers(tracker)
-    // this.registerColor('#000000')
+    var v = document.getElementById('video')
+    canvas.style.width = v.style.width
+    canvas.style.height = v.style.height
   }
   registerColor (hexColor) {
     var components = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hexColor)
@@ -73,13 +75,11 @@ export default class VideoComponent extends React.Component {
   }
   render () {
     return (
-      <div className='demo-frame'>
-        <div className='position-div'>
-          <video id='video' style={{height: '325px'}} autoPlay />
-          <canvas id='canvas' style={{height: '325px'}} />
-          <img id='elsa' style={{width: '50px', height: '50px'}} src={elsa} />
-          <img id='trump' style={{width: '50px', height: '50px'}} src={trump} />
-        </div>
+      <div className='position-div'>
+        <video id='video' className='video' style={{height: '325px'}} autoPlay />
+        <canvas id='canvas' />
+        <img id='elsa' style={{width: '50px', height: '50px', visibility: 'hidden'}} src={elsa} />
+        <img id='trump' style={{width: '50px', height: '50px', visibility: 'hidden'}} src={trump} />
       </div>
     )
   }

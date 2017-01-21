@@ -1,12 +1,11 @@
 .box4 {
-    background-color: transparent;
-    padding: 5px
+    background-color: rgba(14.9%, 13.7%, 0%, 0.502);
+    padding: 5px;
+    border: 1px solid white;
+    margin-top: 20px;
 }
 
-.box5 {
-    padding: 5px
-}
-
-.box6 {
-    padding: 5px
+input {
+    background-color: #6B1000;
+    color: #FFF;
 }
