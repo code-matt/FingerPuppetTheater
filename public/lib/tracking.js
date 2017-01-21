@@ -2233,9 +2233,9 @@
   tracking.ColorTracker.registerColor('cyan', function(r, g, b) {
     var thresholdGreen = 50,
       thresholdBlue = 70,
-      dx = r - 0,
-      dy = g - 255,
-      dz = b - 255;
+      dx = r - 222,
+      dy = g - 232,
+      dz = b - 83;
 
     if ((g - r) >= thresholdGreen && (b - r) >= thresholdBlue) {
       return true;

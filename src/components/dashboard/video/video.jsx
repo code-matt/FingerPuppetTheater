@@ -1,5 +1,6 @@
 import React from 'react'
 // import initGUIControllers from './colorControls.js'
+import './video.css'
 
 export default class VideoComponent extends React.Component {
   constructor () {
@@ -11,8 +12,8 @@ export default class VideoComponent extends React.Component {
     var video = document.getElementById('video')
     var canvas = document.getElementById('canvas')
     var context = canvas.getContext('2d')
-    var tracker = new window.tracking.ColorTracker()
-    window.tracking.track('#video', tracker, { camera: true })
+    var tracker = new window.tracking.ColorTracker(['cyan'])
+    window.tracking.track(video, tracker, { camera: true })
     tracker.on('track', function (event) {
       console.log(event)
       context.clearRect(0, 0, canvas.width, canvas.height)
@@ -29,7 +30,7 @@ export default class VideoComponent extends React.Component {
       })
     })
     // initGUIControllers(tracker)
-    this.registerColor('#FFFFFF')
+    this.registerColor('#000000')
   }
   registerColor (hexColor) {
     var components = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hexColor)
