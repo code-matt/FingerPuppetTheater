@@ -8,7 +8,10 @@ export default class InputComponent extends React.Component {
         <div className='pull-left'>
           <img className='hax' src={this.props.img} style={{maxWidth: '100px', maxHeight: '100px'}}/>
         </div>
-        <form className='form'>
+        <form onSubmit={ (event) => {
+          event.preventDefault()
+          this.props._puppetActions.changePuppet(event.target.value)
+        }}className='form'>
           <input type='text' />
           <input type='submit' className='submit' />
         </form>

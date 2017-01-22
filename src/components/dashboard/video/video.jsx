@@ -9,6 +9,12 @@ export default class VideoComponent extends React.Component {
     super()
     this.componentDidMount = this.componentDidMount.bind(this)
     this.registerColor = this.registerColor.bind(this)
+
+    // this is going to be changing upwards of 60 times a second,
+    // no good for redux
+    this.trump = undefined
+    this.elsa = undefined
+    this.lastRecs = []
   }
 
   componentDidMount () {
@@ -19,18 +25,43 @@ export default class VideoComponent extends React.Component {
     var elsa = document.getElementById('elsa')
     var trump = document.getElementById('trump')
     window.tracking.track(video, tracker, { camera: true })
+    var component = this
     tracker.on('track', function (event) {
+      component.trump = undefined
+      component.elsa = undefined
       context.clearRect(0, 0, canvas.width, canvas.height)
+      if (event.length === 0) {
+        context.clearRect(0, 0, canvas.width, canvas.height)
+        component.elsa = context.drawImage(elsa, component.lastRecs.elsa.rect.x - 100, component.lastRecs.elsa.y - 100, 100, 100)
+        component.trump = context.drawImage(trump, component.lastRecs.trump.x - 100, component.lastRecs.trump.y - 100, 100, 100)
+        return
+      }
       event.data.forEach(function (rect) {
         if (rect.color === 'custom') {
           rect.color = tracker.customColor
         }
         context.strokeStyle = rect.color
-        context.strokeRect(rect.x, rect.y, rect.width, rect.height)
+        // context.strokeRect(rect.x, rect.y, rect.width, rect.height)
         if (rect.color === 'cyan') {
-          context.drawImage(elsa, rect.x, rect.y, 100, 100)
+          if (!component.elsa) {
+            component.elsa = context.drawImage(elsa, rect.x - 100, rect.y - 100, 100, 100)
+            component.lastRecs.push({
+              elsa: {
+                x: rect.x,
+                y: rect.y
+              }
+            })
+          }
         } else if (rect.color === 'magenta') {
-          context.drawImage(trump, rect.x, rect.y, 100, 100)
+          if (!component.trump) {
+            component.trump = context.drawImage(trump, rect.x - 100, rect.y - 100, 100, 100)
+            component.lastRecs.push({
+              trump: {
+                x: rect.x,
+                y: rect.y
+              }
+            })
+          }
         }
         context.font = '11px Helvetica'
         context.fillStyle = '#fff'
@@ -39,7 +70,7 @@ export default class VideoComponent extends React.Component {
       })
     })
     var v = document.getElementById('video')
-    canvas.style.width = v.style.width
+    canvas.style.width = '433.33px'
     canvas.style.height = v.style.height
   }
   registerColor (hexColor) {
